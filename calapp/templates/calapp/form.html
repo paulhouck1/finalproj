@@ -1,0 +1,23 @@
+{% extends 'calapp/base.html' %}
+{% block content %}
+<div class="container form-group">
+  <br />
+  <div class="row">
+    <div class="col-lg-4">
+      <h1>Add A New Event! </h1>
+    </div>
+    <div class="col-lg-8">
+      <button onclick = "window.location='{% url 'index' %}'" type="button" class="btn btn-warning">Go Back </button>
+
+    </div>
+  </div>
+<form method="POST">
+  {% csrf_token %}
+  {% for field in form %}
+  {{ field.errors }}
+  <input placeholder="{{ field.label }}" name="{{ field.name }}" class="form-control" />
+  {% endfor %}
+  <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+  </div>
+{% endblock %}
